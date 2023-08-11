@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOV, FL, WD, SS Calculator</title>
+    <style>
+        body {
+            font-family: Verdana, Arial, sans-serif;
+            background-color: white;
+        }
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            height: 30px;
+            width: 80px;
+            margin: 5px;
+        }
+        .output {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>FOV, FL, WD, SS Calculator</h2>
+        <label for="FOV">Please enter FOV:</label>
+        <input type="number" id="FOV">
+        <br>
+        <label for="SS">Please enter SS:</label>
+        <input type="number" id="SS">
+        <br>
+        <label for="FL">Please enter FL:</label>
+        <input type="number" id="FL">
+        <br>
+        <label for="WD">Please enter WD:</label>
+        <input type="number" id="WD">
+        <br>
+        <button onclick="calculate()">Calculate</button>
+        <button onclick="reset()">Reset</button>
+        <p class="output" id="output"></p>
+    </div>
+    
+    <script>
+        function calculate() {
+            let FOV = parseFloat(document.getElementById('FOV').value);
+            let SS = parseFloat(document.getElementById('SS').value);
+            let FL = parseFloat(document.getElementById('FL').value);
+            let WD = parseFloat(document.getElementById('WD').value);
+            let output = document.getElementById('output');
+            let cnt = 0;
+            let boolean = true;
+            
+            let allEntries = [FOV, FL, SS, WD];
+            let index = allEntries.indexOf('');
+            for (let i = 0; i < 4; i++) {
+                if (allEntries[i] === '') {
+                    cnt++;
+                    index = i;
+                }
+                if (i !== index && isNaN(allEntries[i])) {
+                    boolean = false;
+                }
+            }
+            
+            if (cnt === 1 && boolean) {
+                if (isNaN(WD)) {
+                    try {
+                        WD = (FL * FOV) / SS;
+                        output.textContent = `WD = ${WD}`;
+                    } catch {
+                        output.textContent = "Can't divide with zero!";
+                    }
+                } else if (isNaN(FOV)) {
+                    try {
+                        FOV = (WD * SS) / FL;
+                        output.textContent = `FOV = ${FOV}`;
+                    } catch {
+                        output.textContent = "Can't divide with zero!";
+                    }
+                } else if (isNaN(FL)) {
+                    try {
+                        FL = (WD * SS) / FOV;
+                        output.textContent = `FL = ${FL}`;
+                    } catch {
+                        output.textContent = "Can't divide with zero!";
+                    }
+                } else if (isNaN(SS)) {
+                    try {
+                        SS = (FL * FOV) / WD;
+                        output.textContent = `SS = ${SS}`;
+                    } catch {
+                        output.textContent = "Can't divide with zero!";
+                    }
+                }
+            } else {
+                output.textContent = "Please check your values";
+            }
+        }
+        
+        function reset() {
+            document.getElementById('FOV').value = '';
+            document.getElementById('SS').value = '';
+            document.getElementById('FL').value = '';
+            document.getElementById('WD').value = '';
+            document.getElementById('output').textContent = '';
+        }
+    </script>
+</body>
+</html>

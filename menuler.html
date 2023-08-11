@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="menuler.css">
+  <title>Document</title>
+</head>
+<body>
+  
+  
+  <header>
+    <div class="site-adı">
+    <nav class="navbar">
+      <a href="#" class="nav-brading">Site Adı Logosu</a>
+    </nav>
+  </div>
+  
+    <ul class="nav-menu">
+      
+      <li class="nav-item">
+        <a href="#" class="nav-link">Kafeler</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Egzotik Kahveler</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Sıralama Listsi</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Etkinlikler</a>
+      </li>
+    </ul>
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span  class="bar"></span>
+    </div>
+
+    <div id="YanMenu" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+    
+      &times;</a>
+    
+      <a href="#">Anasayfa</a>
+      <a href="#">PHP</a>
+      <a href="#">CSS</a>
+      <a href="#">HTML</a>
+    </div>
+    
+    <div id="main">
+      
+      <span style="font-size:40px;cursor:pointer" onclick="openNav()">
+    
+      &#9776; </span>   
+    
+    </div>
+    
+  </header>
+  <script>
+    function openNav() {
+      document.getElementById("YanMenu").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    
+    function closeNav() {
+      document.getElementById("YanMenu").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      document.body.style.backgroundColor = "white";
+    }
+    </script>
+</body>
+</html>

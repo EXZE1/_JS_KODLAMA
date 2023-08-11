@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+
+<script type="text/javascript">
+    function ssBulma(){
+        
+        fl= parseInt(document.getElementById('focal-length').value);
+        wd= parseInt(document.getElementById('working-distance').value);
+        fv= parseInt(document.getElementById('field-of-view').value);
+       
+        document.getElementById('sonuc').value = ((fl*fv)/wd)
+    }
+    function fvBulma(){
+
+        ss= parseInt(document.getElementById('sensor-size').value);
+        fl= parseInt(document.getElementById('focal-length').value);
+        wd= parseInt(document.getElementById('working-distance').value);
+        document.getElementById('sonuc').value = ((ss*wd)/fl)
+    }
+    function flBulma(){
+        ss= parseInt(document.getElementById('sensor-size').value);
+        fv= parseInt(document.getElementById('field-of-view').value);
+        wd= parseInt(document.getElementById('working-distance').value);
+        document.getElementById('sonuc').value =( (ss*wd)/fv)
+    }
+    function wdBulma(){
+        ss= parseInt(document.getElementById('sensor-size').value);
+        fl= parseInt(document.getElementById('focal-length').value);
+        fv= parseInt(document.getElementById('field-of-view').value);
+        document.getElementById('sonuc').value = ((fl*fv)/ss)
+    }
+</script>
+</head>
+<body>
+    <form>
+        <label>sensor size</label>
+        <input type="text" name="sensor-size" id="sensor-size"><br/>
+
+        <label>focal length</label>
+        <input type="text" name="focal-length" id="focal-length"><br/>
+
+        <label>working distance</label>
+        <input type="text" name="working-distance" id="working-distance"><br/>
+
+        <label>field of view</label>
+        <input type="text" name="field-of-view" id="field-of-view"><br/>
+        
+
+        
+
+        <label>Sonuç :</label>
+        <input type="text"  id="sonuc"><br/><br/>
+         //Oğuzhan Yücedağ Blog uygulaması JavaScript kodları
+    <input type="button" onclick="fvBulma();" value="fvBulma"/>
+    <input type="button" onclick="ssBulma();"  value="ssBulma"/>
+    <input type="button" onclick="flBulma();" value="flBulma"/>
+    <input type="button" onclick="wdBulma();" value="wdBulma"/>
+    
+</form>
+</body>
+</html>
